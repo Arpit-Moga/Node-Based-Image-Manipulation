@@ -1,5 +1,3 @@
-// Node-Based Image Manipulation Interface - Core Implementation
-
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <unordered_map>
@@ -8,7 +6,7 @@
 #include <set>
 #include <string>
 
-// Abstract base class for all nodes
+
 class Node {
 public:
     int id;
@@ -21,7 +19,7 @@ public:
     virtual ~Node() = default;
 };
 
-// Image Input Node
+
 class ImageInputNode : public Node {
     std::string path;
 public:
@@ -38,10 +36,10 @@ public:
     }
 };
 
-// Brightness/Contrast Node
+
 class BrightnessContrastNode : public Node {
-    double brightness = 0.0; // -100 to +100
-    double contrast = 1.0;   // 0 to 3
+    double brightness = 0.0; 
+    double contrast = 1.0;   
 public:
     BrightnessContrastNode() {
         name = "BrightnessContrast";
@@ -59,7 +57,7 @@ public:
     }
 };
 
-// Output Node
+
 class OutputNode : public Node {
     std::string outPath;
 public:
@@ -75,7 +73,7 @@ public:
     }
 };
 
-// Graph Engine
+
 class GraphEngine {
     std::unordered_map<int, std::shared_ptr<Node>> nodes;
     std::set<int> visited;
@@ -116,28 +114,28 @@ public:
     }
 };
 
-int main() {
-    GraphEngine engine;
+// int main() {
+//     GraphEngine engine;
 
-    auto input = std::make_shared<ImageInputNode>("Input.jpg");
-    input->id = 1;
+//     auto input = std::make_shared<ImageInputNode>("Input.jpg");
+//     input->id = 1;
 
-    auto bc = std::make_shared<BrightnessContrastNode>();
-    bc->id = 2;
-    bc->setParams({{"brightness", 50}, {"contrast", 1.5}});
+//     auto bc = std::make_shared<BrightnessContrastNode>();
+//     bc->id = 2;
+//     bc->setParams({{"brightness", 50}, {"contrast", 1.5}});
 
-    auto output = std::make_shared<OutputNode>("Output.jpg");
-    output->id = 3;
+//     auto output = std::make_shared<OutputNode>("Output.jpg");
+//     output->id = 3;
 
-    engine.addNode(input);
-    engine.addNode(bc);
-    engine.addNode(output);
+//     engine.addNode(input);
+//     engine.addNode(bc);
+//     engine.addNode(output);
 
-    engine.connectNodes(input, bc);
-    engine.connectNodes(bc, output);
+//     engine.connectNodes(input, bc);
+//     engine.connectNodes(bc, output);
 
-    engine.execute();
+//     engine.execute();
 
-    std::cout << "Processing complete." << std::endl;
-    return 0;
-}
+//     std::cout << "Processing complete." << std::endl;
+//     return 0;
+// }
