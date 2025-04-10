@@ -119,14 +119,14 @@ public:
 int main() {
     GraphEngine engine;
 
-    auto input = std::make_shared<ImageInputNode>("input.jpg");
+    auto input = std::make_shared<ImageInputNode>("Input.jpg");
     input->id = 1;
 
     auto bc = std::make_shared<BrightnessContrastNode>();
     bc->id = 2;
     bc->setParams({{"brightness", 50}, {"contrast", 1.5}});
 
-    auto output = std::make_shared<OutputNode>("output.jpg");
+    auto output = std::make_shared<OutputNode>("Output.jpg");
     output->id = 3;
 
     engine.addNode(input);
