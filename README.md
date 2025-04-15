@@ -1,7 +1,5 @@
 # ✨ NodeFusion Image Editor ✨
 
-![Python Version](https://img.shields.io/badge/python-3.x-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ---
-
 Unleash your creativity with NodeFusion! 🎨🔗 A simple, node-based image editor built with Python and Tkinter. Connect nodes visually to build complex image processing pipelines right on your desktop. Perfect for learning, experimenting, and basic image manipulation tasks!
 
 ## 🚀 Features
