@@ -1,14 +1,13 @@
+#include <thread>
+#include <chrono>
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include "gui.h"
-#include <thread>
-#include <chrono>
 
 int main() {
     if (!glfwInit()) return -1;
-
     const char* glsl_version = "#version 130";
     GLFWwindow* window = glfwCreateWindow(1280, 720, "Node-Based Image Editor", NULL, NULL);
     glfwMakeContextCurrent(window);
@@ -16,7 +15,7 @@ int main() {
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
     ImGui::StyleColorsDark();
@@ -38,7 +37,7 @@ int main() {
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
     ImGui_ImplOpenGL3_Shutdown();

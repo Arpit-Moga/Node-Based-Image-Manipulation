@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 #include "NodeBase.h"
 
 class BrightnessContrastNode : public Node {
@@ -6,21 +6,18 @@ private:
     float brightness = 0.0f;
     float contrast = 1.0f;
     cv::Mat inputImage, outputImage;
-    char inputKey[256] = "";
 
 public:
     BrightnessContrastNode(int _id) {
         id = _id;
         name = "Brightness & Contrast";
+        position = ImVec2(300, 100);
     }
 
     void renderUI() override {
-        ImGui::Begin(("Node: " + name).c_str());
-        ImGui::InputText("Input Key", inputKey, IM_ARRAYSIZE(inputKey));
-        ImGui::InputText("Output Key", &outputKey[0], 256);
+        ImGui::Text("%s", name.c_str());
         ImGui::SliderFloat("Brightness", &brightness, -100.0f, 100.0f);
         ImGui::SliderFloat("Contrast", &contrast, 0.0f, 3.0f);
-        ImGui::End();
     }
 
     void process() override {
@@ -32,6 +29,4 @@ public:
     cv::Mat getOutput() override { return outputImage; }
 
     void setInput(cv::Mat img) override { inputImage = img; }
-
-    const char* getInputKey() { return inputKey; }
 };

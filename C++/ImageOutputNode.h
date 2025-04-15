@@ -5,22 +5,19 @@ class ImageOutputNode : public Node {
 private:
     cv::Mat inputImage;
     char outputPath[256] = "../Output.jpg";
-    char inputKey[256] = "";
-
 public:
     ImageOutputNode(int _id) {
         id = _id;
         name = "Image Output";
+        position = ImVec2(500, 100);
     }
 
     void renderUI() override {
-        ImGui::Begin(("Node: " + name).c_str());
-        ImGui::InputText("Input Key", inputKey, IM_ARRAYSIZE(inputKey));
+        ImGui::Text("%s", name.c_str());
         ImGui::InputText("Save Path", outputPath, IM_ARRAYSIZE(outputPath));
         if (ImGui::Button("Save") && !inputImage.empty()) {
             cv::imwrite(outputPath, inputImage);
         }
-        ImGui::End();
     }
 
     void process() override {}
@@ -28,6 +25,4 @@ public:
     cv::Mat getOutput() override { return inputImage; }
 
     void setInput(cv::Mat img) override { inputImage = img; }
-
-    const char* getInputKey() { return inputKey; }
 };
